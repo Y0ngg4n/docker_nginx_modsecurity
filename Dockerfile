@@ -55,7 +55,7 @@ libssl-dev      \
 libpcre3-dev    \
 libxml2-dev     \
 libyajl-dev     \
-lua5.2-dev      \
+lua-leg-dev      \
 libgeoip-dev    \
 libcurl4-openssl-dev    \
 openssl
