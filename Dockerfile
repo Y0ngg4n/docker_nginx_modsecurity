@@ -38,7 +38,9 @@ RUN strip /usr/local/modsecurity/bin/* /usr/local/modsecurity/lib/*.a /usr/local
 FROM ubuntu AS nginx-build
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV NGINX_VERSION 1.21.1
+
+RUN latestVer=$(curl -s 'http://nginx.org/en/download.html' | sed 's/</\'$'\n''</g' | sed -n '/>Stable version$/,$ p' | egrep -m1 -o '/download/nginx-.+\.tar\.gz') && echo "$latestVer" | sed 's/\/download\/nginx-//g' | sed 's/\.tar\.gz//g'
+ENV NGINX_VERSION "${latestVer}"
 
 RUN apt-get update -qq && \
 apt install  -qq -y --no-install-recommends --no-install-suggests \
