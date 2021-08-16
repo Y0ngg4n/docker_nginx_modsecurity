@@ -14,7 +14,7 @@ RUN apt-get update -qq && \
     libtool              \
     libxml2-dev          \
     libyajl-dev          \
-    lua5.2-dev           \
+    lua-leg-dev           \
     git                  \
     pkgconf              \
     ssdeep               \
@@ -135,7 +135,7 @@ apt-get install --no-install-recommends --no-install-suggests -y \
 ca-certificates \
 libcurl4-openssl-dev  \
 libyajl-dev \
-lua5.2-dev \
+lua-leg-dev \
 libgeoip-dev \
 vim \
 libxml2
