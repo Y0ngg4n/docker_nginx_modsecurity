@@ -19,6 +19,6 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: yonggan/fluffy_rest_api:latest
+          tags: yonggan/docker_nginx_modsecurity:latest
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
