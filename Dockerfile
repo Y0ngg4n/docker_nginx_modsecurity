@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 as modsecurity-build
+FROM ubuntu as modsecurity-build
 LABEL maintainer="krish512 <krish512@hotmail.com>"
 
 # Install Prereqs
@@ -38,7 +38,7 @@ RUN strip /usr/local/modsecurity/bin/* /usr/local/modsecurity/lib/*.a /usr/local
 FROM ubuntu:18.04 AS nginx-build
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV NGINX_VERSION 1.15.0
+ENV NGINX_VERSION 1.21.1
 
 RUN apt-get update -qq && \
 apt install  -qq -y --no-install-recommends --no-install-suggests \
