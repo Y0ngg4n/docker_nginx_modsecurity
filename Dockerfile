@@ -35,7 +35,7 @@ RUN cd /opt && \
 RUN strip /usr/local/modsecurity/bin/* /usr/local/modsecurity/lib/*.a /usr/local/modsecurity/lib/*.so*
 
 
-FROM ubuntu:18.04 AS nginx-build
+FROM ubuntu AS nginx-build
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV NGINX_VERSION 1.21.1
@@ -125,7 +125,7 @@ STOPSIGNAL SIGTERM
 CMD ["/usr/local/nginx/nginx", "-g", "daemon off;"]
 
 
-FROM ubuntu:18.04
+FROM ubuntu
 
 ENV DEBIAN_FRONTEND noninteractive
 
