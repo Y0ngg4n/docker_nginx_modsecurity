@@ -19,6 +19,7 @@ RUN apt-get update -qq && \
     pkgconf              \
     ssdeep               \
     libgeoip-dev         \
+    curl                 \
     wget             &&  \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
