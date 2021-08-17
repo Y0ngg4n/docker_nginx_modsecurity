@@ -41,7 +41,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update && apt install curl sed grep -y
 RUN NGINX_VERSION=$(curl -s 'http://nginx.org/en/download.html' | sed 's/</\'$'\n''</g' | sed -n '/>Stable version$/,$ p' | egrep -m1 -o '/download/nginx-.+\.tar\.gz' | sed 's/\/download\/nginx-//g' | sed 's/\.tar\.gz//g')
-RUN echo "Latest Nginx version: $NGINX_VERSION"
+RUN echo Latest Nginx version: "$NGINX_VERSION"
 
 RUN apt-get update -qq && \
 apt install  -qq -y --no-install-recommends --no-install-suggests \
