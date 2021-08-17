@@ -19,7 +19,6 @@ RUN apt-get update -qq && \
     pkgconf              \
     ssdeep               \
     libgeoip-dev         \
-    curl                 \
     wget             &&  \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -40,6 +39,7 @@ FROM ubuntu AS nginx-build
 
 ENV DEBIAN_FRONTEND noninteractive
 
+RUN apt update && apt install curl -y
 RUN latestVer=$(curl -s 'http://nginx.org/en/download.html' | sed 's/</\'$'\n''</g' | sed -n '/>Stable version$/,$ p' | egrep -m1 -o '/download/nginx-.+\.tar\.gz')
 RUN echo "${latestVer}" | sed 's/\/download\/nginx-//g' | sed 's/\.tar\.gz//g'
 ENV NGINX_VERSION "${latestVer}"
