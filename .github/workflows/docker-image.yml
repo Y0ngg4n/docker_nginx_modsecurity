@@ -12,6 +12,8 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       - uses: actions/checkout@v2
+      - run: |
+          NGINX_VERSION=$(curl -s 'http://nginx.org/en/download.html' | sed 's/</\'$'\n''</g' | sed -n '/>Stable version$/,$ p' | egrep -m1 -o '/download/nginx-.+\.tar\.gz' | sed 's/\/download\/nginx-//g' | sed 's/\.tar\.gz//g')
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
@@ -20,5 +22,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: yonggan/docker_nginx_modsecurity:latest
+          build-args: "$NGINX_VERSION"
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
