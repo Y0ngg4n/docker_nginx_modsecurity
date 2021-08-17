@@ -25,6 +25,7 @@ RUN apt-get update -qq && \
 RUN cd /opt && \
     git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity && \
     cd ModSecurity && \
+    mkdir -p /etc/nginx/modsec/ && \
     cp unicode.mapping /etc/nginx/modsec/ && \
     git submodule init && \
     git submodule update && \
