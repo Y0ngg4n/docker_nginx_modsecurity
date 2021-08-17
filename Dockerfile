@@ -64,6 +64,9 @@ openssl
 RUN cd /opt && \
 git clone --depth 1 https://github.com/SpiderLabs/ModSecurity-nginx.git
 
+# Fix missing unicode.mapping
+RUN cp ModSecurity-nginx/unicode.mapping /etc/nginx/modsec/
+
 RUN cd /opt && \
 git clone --recursive https://github.com/google/ngx_brotli.git
 
