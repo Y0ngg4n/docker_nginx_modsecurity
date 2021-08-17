@@ -22,6 +22,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: yonggan/docker_nginx_modsecurity:latest
-          build-args: "$NGINX_VERSION"
+          build-args: NGINX_VERSION="$NGINX_VERSION"
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
