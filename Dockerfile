@@ -25,6 +25,7 @@ RUN apt-get update -qq && \
 RUN cd /opt && \
     git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLabs/ModSecurity && \
     cd ModSecurity && \
+    cp unicode.mapping /etc/nginx/modsec/ && \
     git submodule init && \
     git submodule update && \
     ./build.sh && \
@@ -63,9 +64,6 @@ openssl
 
 RUN cd /opt && \
 git clone --depth 1 https://github.com/SpiderLabs/ModSecurity-nginx.git
-
-# Fix missing unicode.mapping
-RUN cp ModSecurity-nginx/unicode.mapping /etc/nginx/modsec/
 
 RUN cd /opt && \
 git clone --recursive https://github.com/google/ngx_brotli.git
